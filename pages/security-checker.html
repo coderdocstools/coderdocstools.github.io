@@ -17,11 +17,23 @@
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../style/styleEmailColection.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
+    <link rel="stylesheet" href="../loadingModal/css/jquery.loadingModal.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -119,82 +131,19 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">CoderDocs - Get access token</h1>
+                    <h1 class="page-header">CoderDocs - Security Checker</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <i class="fa fa-sign-in"></i> <strong>Login and get access token</strong>
-                        </div>
-                        <div class="panel-body">
-                          <form role="form">
-                              <div class="form-group">
-                                  <label>Facebook Email</label>
-                                  <input type="text" class="form-control" id="username" placeholder="Your email">
-                              </div>
-                              <div class="form-group">
-                                  <label>Facebook Password</label>
-                                  <input type="password" class="form-control" id="password" placeholder="Your password">
-                              </div>
-                              <p>
-                                  <p class="control-description">Enter your Facebook username and password. Click "Get token" button.</p>
-                                  <button type="button" id="getToken" class="btn btn-outline btn-primary btn-lg">Get access token</button>
-                              </p>
-                          </form>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                          <div class="row">
-                            <div class="col-xs-3" style="width: 11%;">
-                                <i class="fa fa-exclamation-triangle fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" style="float:left !important;">Warning</div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="panel-body" style="font-size: 18px;">
-                          <p><i class="fa fa-hand-o-right"></i> Don't share your access token with anyone!<p>
-                          <p><i class="fa fa-hand-o-right"></i> Don't type your access token to unsecure website!<p>
-                          <p><i class="fa fa-hand-o-right"></i> Don't steal the token of anyone!<p>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
+                <div class="col-lg-12">
+                  This tool is not available now.
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> <strong>Your token will look like below blue line.</strong>
-                        </div>
-                        <div class="panel-body" style="word-wrap: break-word;">
-				                   <p>{"session_key":"5.KvjOn3MyFnhKrA.1536163123.13-100005930774105","uid":100009863774105,"secret":"42f9d09a597f885d3afc03a6820eb450","<strong>access_token</strong>":"<span style="background-color: blue;  color: white;">EAAAAUaZA8jlABADX6IycK8lzK2NLKDJFlkjalfdlasdkrNCqMWZC1EZCh6eRJYsPiOzrH8C1cZC8LC1B8rUEPcgf4H3K50e87JY7XTjYr51maQL82LSpWutZBRhXYTJ05uXFltaMjZBLGrrCnaWWfWjAF4yR4vaH9dVztbrNyNBTyi0puKbGwxHmnjxZAPGenI</span>","machine_id":"xv-PW1T3uDgPsSZC-r4E2ogc","confirmed":true,"identifier":"lenhatthanh20","user_storage_key":"18a044aa48032e574e779fe143dcf7b12585c8473305f0e69cd4fd1cde3c5b0b"}</p>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-hand-o-right"></i> <strong>Your access token will be here</strong>
-                        </div>
-                        <div class="panel-body">
-                          <iframe seamless class="col-md-12" id="iframe" frameborder="0" style="wordWrap: break-word" scrolling="auto">
-                          </iframe>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
             </div>
             <!-- /.row -->
+
         </div>
         <!-- /#page-wrapper -->
 
@@ -210,10 +159,18 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
+    <!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <script src="../loadingModal/js/jquery.loadingModal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/scriptsEmailColection.js"></script>
 
-    <script src="../js/getAccessToken.js"></script>
 
 </body>
 
