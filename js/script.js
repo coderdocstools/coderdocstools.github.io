@@ -1,4 +1,4 @@
-var t = $('#example').DataTable({
+var t = $('#dataTables-example').DataTable({
   responsive: true,
   "aaSorting": [2,'desc']
 });
@@ -14,7 +14,7 @@ var totalReaction = 0;
 
 /*-----------------------------*/
 //select emements in table
-$('#example tbody').on( 'click', 'tr', function () {
+$('#dataTables-example tbody').on( 'click', 'tr', function () {
     $(this).toggleClass('selected');
     var data = t.row( this ).data();
 
