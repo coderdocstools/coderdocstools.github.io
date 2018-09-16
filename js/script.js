@@ -183,56 +183,56 @@ $.get('https://graph.facebook.com/v3.0/me?fields=friends.limit(5000)',
 }
 
 function countLike(response, idFriends, countReac){
-for (var j = 0; j < response.data.length; ++j) { //250 lần
-  if(response.data[j].reactions) { //if have comment in any post
-    countLikeInside(response.data[j].reactions, idFriends, countReac);
+  for (var j = 0; j < response.data.length; ++j) { //250 lần
+    if(response.data[j].reactions) { //if have comment in any post
+      countLikeInside(response.data[j].reactions, idFriends, countReac);
+    }
   }
-}
-if(response.paging&&response){
-  if (response.paging.next) {
+  if(response.paging&&response){
+    if (response.paging.next) {
 
-    $.getJSON(response.paging.next,function(response){
-      countLike(response, idFriends, countReac);
-    });
+      $.getJSON(response.paging.next,function(response){
+        countLike(response, idFriends, countReac);
+      });
+    }
+  }else {
+    drawTable (idFriends, 1);
   }
-}else {
-  drawTable (idFriends, 1);
-}
 }
 
 function countLikeInside (response, idFriends, countReac) {
-for (var k = 0; k < response.data.length; ++k) {
-  for (var i = 0; i < idFriends.length; ++i) {
-    if ((idFriends[i] === response.data[k].id)) {
-      ++countReac[i];
+  for (var k = 0; k < response.data.length; ++k) {
+    for (var i = 0; i < idFriends.length; ++i) {
+      if ((idFriends[i] === response.data[k].id)) {
+        ++countReac[i];
+      }
+    }
+  }
+  if (response.paging&&response) {
+    if (response.paging.next) {
+      $.getJSON(response.paging.next,function(response){
+        countLikeInside(response, idFriends, countReac);
+      });
     }
   }
 }
-if (response.paging&&response) {
-  if (response.paging.next) {
-    $.getJSON(response.paging.next,function(response){
-      countLikeInside(response, idFriends, countReac);
-    });
-  }
-}
-}
 
 function countComment(response, idFriends, count){
-for (var j = 0; j < response.data.length; ++j) {
-  if(response.data[j].comments) { //if have comment in any post
-    countCommentInside(response.data[j].comments, idFriends, count);
+  for (var j = 0; j < response.data.length; ++j) {
+    if(response.data[j].comments) { //if have comment in any post
+      countCommentInside(response.data[j].comments, idFriends, count);
+    }
   }
-}
-if(response.paging&&response){
-  if (response.paging.next) {
+  if(response.paging&&response){
+    if (response.paging.next) {
 
-    $.getJSON(response.paging.next,function(response){
-      countComment(response, idFriends, count);
-    });
+      $.getJSON(response.paging.next,function(response){
+        countComment(response, idFriends, count);
+      });
+    }
+  }else {
+    drawTable (idFriends, 1);
   }
-}else {
-  drawTable (idFriends, 1);
-}
 }
 
 function countCommentInside(response, idFriends, count){
@@ -257,28 +257,28 @@ if (response.paging&&response) {
 }
 
 function drawTable (idFriends, flagTemp){
-flag += flagTemp;
-if (flag === 2) {
-  for (var i = 0; i < idFriends.length; ++i) {
-    t.row.add([ nameFriends[i], idFriends[i], countReactions[i], countComments[i] ]).draw(false);
-    totalComment += countComments[i]; // save total comment
-    totalReaction += countReactions[i]; //save total reaction
-    if(countReactions[i] === 0 && countComments[i] === 0) {
-       ++totalNinja;
-       nameNinjas.push(nameFriends[i]);
+  flag += flagTemp;
+  if (flag === 2) {
+    for (var i = 0; i < idFriends.length; ++i) {
+      t.row.add([ nameFriends[i], idFriends[i], countReactions[i], countComments[i] ]).draw(false);
+      totalComment += countComments[i]; // save total comment
+      totalReaction += countReactions[i]; //save total reaction
+      if(countReactions[i] === 0 && countComments[i] === 0) {
+         ++totalNinja;
+         nameNinjas.push(nameFriends[i]);
+      }
     }
+    totalFriend = idFriends.length; //save total friends
+    $('#totalFriend').text(totalFriend);
+    $('#totalNinja').text(totalNinja);
+    $('#totalComment').text(totalComment);
+    $('#totalReaction').text(totalReaction);
+
+    // destroy the plugin
+    $('body').loadingModal('destroy');
+
+    $('#loading').text("Successfully!");
+
+    $.alert("Get data successfully! Let's enjoy! ");
   }
-  totalFriend = idFriends.length; //save total friends
-  $('#totalFriend').text(totalFriend);
-  $('#totalNinja').text(totalNinja);
-  $('#totalComment').text(totalComment);
-  $('#totalReaction').text(totalReaction);
-
-  // destroy the plugin
-  $('body').loadingModal('destroy');
-
-  $('#loading').text("Successfully!");
-
-  $.alert("Get data successfully! Let's enjoy! ");
-}
 }
