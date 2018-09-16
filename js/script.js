@@ -1,6 +1,12 @@
 var t = $('#dataTables-example').DataTable({
   responsive: true,
-  "aaSorting": [2,'desc']
+  "aaSorting": [2,'desc'],
+  "aoColumns": [
+            { sWidth: '20%' },
+            { sWidth: '20%' },
+            { sWidth: '10%' },
+            { sWidth: '10%' }
+           ]
 });
 $('.listunfriends-id').text("[empty]");
 
