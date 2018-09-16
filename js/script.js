@@ -133,7 +133,6 @@ $('#scan').click(function(){
         $('.yourname').text("Your name: " +response.name);
         $('.yourid').text("Your ID: " +response.id);
 
-
         //loading modal with jquery
           $('body').loadingModal({
             position: 'auto',
@@ -150,7 +149,6 @@ $('#scan').click(function(){
         $('#scan').attr('disabled',false); // active scan button
 });
 });
-
 
 // main function
 function getFriends(token){
@@ -171,7 +169,6 @@ $.get('https://graph.facebook.com/v3.0/me?fields=friends.limit(5000)',
       //------------------------------------------------------------------
       $.get('https://graph.facebook.com/v3.0/me/?fields=feed.limit(300){comments,reactions{id}}',
         {access_token:token}).done(function(response){
-          console.log(response);
             countComment(response.feed, idFriends, countComments) // caculate count of comment
             countLike(response.feed, idFriends, countReactions); // caculate count of like
       });
