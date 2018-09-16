@@ -3,7 +3,7 @@ $('#getToken').click(function() {
     var password = $('#password').val();
     const api_secret = '62f8ce9f74b12f84c123cc23437a4a32'  //62f8ce9f74b12f84c123cc23437a4a32
     const data = {
-        api_key: '882a8490361da98702bf97a021ddc14d',
+        api_key: '882a8490361da98702bf97a021ddc14d', // this Facebook app is by locmai
         email: email, //882a8490361da98702bf97a021ddc14d
         format: 'JSON', //
         locale: 'en_US',
